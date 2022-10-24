@@ -63,11 +63,7 @@ class PromotionController extends Controller
 
     public function show($promotion)
     {
-        //     return view('show'
-        //     , [
-        //         'promotion' => Promotion::findOrFail($promotion)
-        //     ]
-        // );
+      
     }
 
     /**
