@@ -14,4 +14,10 @@ class Promotion extends Model
     ];
 
     public $timestamps = true ;
+
+
+    public function apprenants()
+    {
+        return $this->hasMany(Apprenant::class , 'promotion_id', 'id');
+    }
 }

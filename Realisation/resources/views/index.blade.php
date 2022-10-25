@@ -14,8 +14,8 @@
         @foreach ($Promotion as $item)
         <li class="text-gray-900">
             {{$item->name}} 
-            <a href=" {{ route ('promotion.edit' , [ $item['id']] ) }}">update</a>
-            <form action="{{ route ('promotion.destroy' , [ $item['id']] ) }}" method="post">
+            <a href=" {{ route ('promotion.edit' , [ $item->id] ) }}">update</a>
+            <form action="{{ route ('promotion.destroy' , [ $item->id] ) }}" method="post">
            @csrf
                 @method('DELETE')
                 <input type="submit" value="Delete">

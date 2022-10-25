@@ -14,7 +14,17 @@
      <input type="text" name="nam" value=
      {{ $promotion->name }}
      >
+
      <button type="submit">Update</button>
+
+     <ul>
+        @foreach ($Apprenant as $item)
+        <li class="text-gray-900">
+            {{$item->first_name}} 
+
+        </li>
+        @endforeach
+     </ul>
     </form>
 </body>
 </html>

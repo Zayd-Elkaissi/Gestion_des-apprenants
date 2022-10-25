@@ -14,12 +14,8 @@ class ApprenantController extends Controller
      */
     public function index()
     {
-        $apprenants = Apprenant::all();
-        return view('index', [
-            'Apprenant' => $apprenants
-        ]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +23,7 @@ class ApprenantController extends Controller
      */
     public function create()
     {
-        return view('create');
+        // return view('create');
     }
 
     /**
@@ -38,17 +34,17 @@ class ApprenantController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nam' => 'required'
-        ]);
-        $name = strip_tags($request->input('nam'));
-        Apprenant::create([
-            'name'  => $name
-        ]);
-
-        return redirect('/');
+        // $request->validate([
+        //     'nam' => 'required'
+        // ]);
+        // $name = strip_tags($request->input('nam'));
+        // Apprenant::create([
+        //     'name'  => $name
+        // ]);
+        
+        // return redirect('/');
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -68,9 +64,13 @@ class ApprenantController extends Controller
      */
     public function edit(Apprenant $apprenant)
     {
-        //
+       
+        $apprenants = Apprenant::all();
+        return view('edit', [
+            'Apprenant' => $apprenants
+        ]);
     }
-
+    
     /**
      * Update the specified resource in storage.
      *

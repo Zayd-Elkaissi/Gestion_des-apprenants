@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apprenant;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
 
@@ -75,12 +76,15 @@ class PromotionController extends Controller
 
     public function edit($promotion)
     {
-        return view(
-            'edit',
-            [
-                'promotion' => Promotion::findOrFail($promotion)
-            ]
-        );
+        $promotion = Promotion::find($promotion)->first();
+        dd($promotion->apprenants);
+        return view("promotion.edit",compact('promotion','apprenant'));
+
+        // return view(
+        //     'edit',
+        //     [
+        //         'promotion' => Promotion::findOrFail($promotion)
+        //     ]
     }
 
     /**
