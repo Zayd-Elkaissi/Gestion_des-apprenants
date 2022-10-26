@@ -7,20 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apprenant extends Model
 {
-   protected $table = 'apprenant';
+   protected $table = 'apprenants';
 
    protected $fillable = [
     'first_name',
     'last_name',
-    'password',
+    'email',
     'promotion_id'
    ];
 
    public $timestamps = true;
 
-   public function promotions()
+   public function promotion()
     {
-        return $this->belongsTo(Promotion::class, 'id', 'apprenant_id');
+        return $this->belongsTo(Promotion::class);
     }
 
 }

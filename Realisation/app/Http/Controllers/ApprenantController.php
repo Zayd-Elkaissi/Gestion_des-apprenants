@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apprenant;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 
 class ApprenantController extends Controller
@@ -14,6 +15,7 @@ class ApprenantController extends Controller
      */
     public function index()
     {
+
     }
     
     /**
@@ -21,9 +23,13 @@ class ApprenantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Promotion $promotion)
     {
-        // return view('create');
+        return view('/apprenant/create'
+        , [
+            'id' => $promotion
+        ]
+    );
     }
 
     /**
@@ -32,17 +38,27 @@ class ApprenantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         // $request->validate([
-        //     'nam' => 'required'
+        //     'first_name' => 'required',
+        //     'last_name' => 'required',
+        //     'email' => 'required'
         // ]);
-        // $name = strip_tags($request->input('nam'));
-        // Apprenant::create([
-        //     'name'  => $name
-        // ]);
+        $first_name = strip_tags($request->input('first_name'));
+        $last_name = strip_tags($request->input('last_name'));
+        $email = strip_tags($request->input('email'));
+        // $id = $request->get('id');
+
+        Apprenant::create([
+            'first_name'  => $first_name,
+            'last_name'  => $last_name,
+            'email'  => $email,
+            'promotion_id' => $id
+
+        ]);
         
-        // return redirect('/');
+        return redirect('/promotion/edit/');
     }
     
     /**
@@ -68,6 +84,7 @@ class ApprenantController extends Controller
         $apprenants = Apprenant::all();
         return view('edit', [
             'Apprenant' => $apprenants
+            
         ]);
     }
     

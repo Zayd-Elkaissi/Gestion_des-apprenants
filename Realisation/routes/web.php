@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApprenantController;
 use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PromotionController::class, 'index']);
 Route::get('/create',[ PromotionController::class, 'create']);
-Route::post('/show', [PromotionController::class, 'store']);
+Route::post('/store', [PromotionController::class, 'store']);
 Route::get('/edit', [PromotionController::class, 'edit']);
 Route::resource('/promotion', PromotionController::class);
 Route::get('/search', [PromotionController::class, 'search'])->name('promotion.search');
-// Route::get()
+
+
+//Apprenants Routes
+
+// Route::get('/', [PromotionController::class, 'index']);
+Route::get('/apprenant/create/{id}',[ ApprenantController::class, 'create']);
+Route::post('/apprenant/store/{id}', [ApprenantController::class, 'store'])->name('apprenant.store');
+Route::get('/apprenant.edit', [ApprenantController::class, 'edit']);
+Route::resource('/apprenant', ApprenantController::class);
+Route::get('/apprenant.search', [ApprenantController::class, 'search'])->name('apprenant.search');
+
+// $promotion = Promotion::find($promotion)->first();
+        
+// $apprenants = $promotion->apprenants;

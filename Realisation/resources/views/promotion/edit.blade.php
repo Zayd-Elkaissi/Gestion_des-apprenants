@@ -17,8 +17,11 @@
 
      <button type="submit">Update</button>
 
+     <br>
+     <a href=" {{ route('apprenant.create').'/'.$promotion->id }}">Add Apprenant</a>
+
      <ul>
-        @foreach ($Apprenant as $item)
+        @foreach ($apprenants as $item)
         <li class="text-gray-900">
             {{$item->first_name}} 
 

@@ -10,14 +10,13 @@ class Promotion extends Model
     protected $table = 'promotions';
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     public $timestamps = true ;
 
-
     public function apprenants()
     {
-        return $this->hasMany(Apprenant::class , 'promotion_id', 'id');
+        return $this->hasMany(Apprenant::class);
     }
 }

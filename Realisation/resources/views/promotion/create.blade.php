@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/show" method="post">
+    <form action="/store" method="post">
         @csrf
      <input type="text" name="nam" value="{{ old('nam')}}">
      @error('nam')

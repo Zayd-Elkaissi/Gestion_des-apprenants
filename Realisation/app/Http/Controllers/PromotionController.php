@@ -18,7 +18,7 @@ class PromotionController extends Controller
     public function index()
     {
         $promotions = Promotion::all();
-        return view('index', [
+        return view('promotion.index', [
             'Promotion' => $promotions
         ]);
     }
@@ -32,7 +32,7 @@ class PromotionController extends Controller
 
     public function create()
     {
-        return view('create');
+        return view('promotion.create');
     }
 
     /**
@@ -74,17 +74,12 @@ class PromotionController extends Controller
 
 
 
-    public function edit($promotion)
+    public function edit($id)
     {
-        $promotion = Promotion::find($promotion)->first();
-        dd($promotion->apprenants);
-        return view("promotion.edit",compact('promotion','apprenant'));
+        $promotion = Promotion::find($id);
+        $apprenants = $promotion->apprenants;
+        return view("promotion.edit",compact('promotion','apprenants'));
 
-        // return view(
-        //     'edit',
-        //     [
-        //         'promotion' => Promotion::findOrFail($promotion)
-        //     ]
     }
 
     /**
