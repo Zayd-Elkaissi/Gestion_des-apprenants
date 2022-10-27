@@ -44,9 +44,9 @@ class PromotionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nam' => 'required'
+            'name' => 'required'
         ]);
-        $name = strip_tags($request->input('nam'));
+        $name = strip_tags($request->input('name'));
         Promotion::create([
             'name'  => $name
         ]);
@@ -73,10 +73,9 @@ class PromotionController extends Controller
      */
 
 
-
     public function edit($id)
     {
-        $promotion = Promotion::find($id);
+        $promotion = Promotion::findOrFail($id);
         $apprenants = $promotion->apprenants;
         return view("promotion.edit",compact('promotion','apprenants'));
 
@@ -95,10 +94,10 @@ class PromotionController extends Controller
     public function update(Request $request, $promotion)
     {
         $request->validate([
-            'nam' => 'required'
+            'nameUpdate' => 'required'
         ]);
         $update = Promotion::findOrFail($promotion);
-        $update->name = strip_tags($request->input('nam'));
+        $update->name = strip_tags($request->input('nameUpdate'));
         $update->save();
 
         return redirect('/');

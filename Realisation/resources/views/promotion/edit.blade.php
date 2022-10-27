@@ -11,23 +11,28 @@
     <form action="{{ route('promotion.update', ['promotion'=> $promotion->id])}}" method="post">
         @csrf
         @method('PUT')
-     <input type="text" name="nam" value=
+     <input type="text" name="nameUpdate" value=
      {{ $promotion->name }}
      >
 
      <button type="submit">Update</button>
 
      <br>
-     <a href=" {{ route('apprenant.create').'/'.$promotion->id }}">Add Apprenant</a>
-
+     <a href="/apprenant/create{{'/'.$promotion->id}}">Add Apprenant</a>
+     
      <ul>
         @foreach ($apprenants as $item)
         <li class="text-gray-900">
             {{$item->first_name}} 
+            {{$item->last_name}} 
+            {{$item->email}} 
 
         </li>
+        <a href="/apprenant/edit/{{$item->id}}">Edit</a>
+        <a href="{{ route('apprenant.destroy' , $item->id ) }}">Delete</a>
         @endforeach
      </ul>
     </form>
+    
 </body>
 </html>

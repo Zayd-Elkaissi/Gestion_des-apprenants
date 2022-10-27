@@ -9,8 +9,8 @@
 <body>
     <form action="/store" method="post">
         @csrf
-     <input type="text" name="nam" value="{{ old('nam')}}">
-     @error('nam')
+     <input type="text" name="name" value="{{ old('name')}}">
+     @error('name')
      <div class="py-4 text-gray-900">
           {{$message}}
      </div>

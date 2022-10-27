@@ -15,6 +15,7 @@ class ApprenantController extends Controller
      */
     public function index()
     {
+
     }
 
     /**
@@ -24,12 +25,7 @@ class ApprenantController extends Controller
      */
     public function create($id)
     {
-        return view(
-            'apprenant.create',
-            [
-                'id' => $id
-            ]
-        );
+        return view('apprenant.create', [ 'id' => $id ]);
     }
 
     /**
@@ -40,15 +36,14 @@ class ApprenantController extends Controller
      */
     public function store(Request $request, $id)
     {
-        // $request->validate([
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'email' => 'required'
-        // ]);
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required'
+        ]);
         $first_name = strip_tags($request->input('first_name'));
         $last_name = strip_tags($request->input('last_name'));
         $email = strip_tags($request->input('email'));
-        // $id = $request->get('id');
 
         Apprenant::create([
             'first_name'  => $first_name,
@@ -78,11 +73,11 @@ class ApprenantController extends Controller
      * @param  \App\Models\Apprenant  $apprenant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Apprenant $apprenant)
+    public function edit($id)
     {
 
-        $apprenants = Apprenant::all();
-        return view('edit', [
+        $apprenants = Apprenant::find($id);
+        return view('apprenant/edit', [
             'Apprenant' => $apprenants
 
         ]);
@@ -95,9 +90,19 @@ class ApprenantController extends Controller
      * @param  \App\Models\Apprenant  $apprenant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Apprenant $apprenant)
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required'
+        ]);
+        $apprenant = Apprenant::findOrFail($id);
+        $apprenant->first_name = strip_tags($request->input('first_name'));
+        $apprenant->last_name = strip_tags($request->input('last_name'));
+        $apprenant->email = strip_tags($request->input('email'));
+        $apprenant->save();
+        return redirect("/promotion/$apprenant->promotion_id/edit");
     }
 
     /**
@@ -106,8 +111,12 @@ class ApprenantController extends Controller
      * @param  \App\Models\Apprenant  $apprenant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Apprenant $apprenant)
+    public function destroy($id)
     {
-        //
+        $apprenant = Apprenant::findOrFail($id);
+
+        $apprenant->delete();
+        return redirect()->back();
     }
+
 }
