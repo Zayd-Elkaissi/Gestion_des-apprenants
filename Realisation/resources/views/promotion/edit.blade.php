@@ -19,7 +19,8 @@
 
      <br>
      <a href="/apprenant/create{{'/'.$promotion->id}}">Add Apprenant</a>
-     
+     <input type="text" name="search" id="search">
+    <div id="show"></div>
      <ul>
         @foreach ($apprenants as $item)
         <li class="text-gray-900">
@@ -33,6 +34,27 @@
         @endforeach
      </ul>
     </form>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script type="text/javascript">
+        $(document).ready(function () {
+          $('#search').keyup(function () {
+            var input = $(this).val();
+            // alert(input);
+            if (input != ' ') {
+              $.ajax({
+                type:'get',
+                url: '{{ route("apprenant.search")}}',
+                // method: "POST",
+                data: { key: input },
+                success: function (data) {
+                  $('#show').html(data);
+                }
+              });
+  
+            }
+
+        });
+        });
+      </script>
 </body>
 </html>

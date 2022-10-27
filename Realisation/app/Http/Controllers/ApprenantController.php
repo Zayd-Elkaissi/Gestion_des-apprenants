@@ -15,7 +15,7 @@ class ApprenantController extends Controller
      */
     public function index()
     {
-
+        
     }
 
     /**
@@ -119,4 +119,18 @@ class ApprenantController extends Controller
         return redirect()->back();
     }
 
+    //Search with apprenants
+    public function search(Request $request)
+    {
+        $input = $request->key;
+        $output = '';
+        $search = Apprenant::where('first_name', 'LIKE', '%' . $input . '%')->get();
+        foreach ($search as $apprenant) {
+            $output .=
+                '<tr>
+           <td> ' . $apprenant->first_name . ' </td>
+           </tr>';
+        }
+        return $output;
+    }
 }
