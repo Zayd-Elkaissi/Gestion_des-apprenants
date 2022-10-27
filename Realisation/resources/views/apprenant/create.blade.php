@@ -7,11 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="
-    {{-- /apprenant/store .$promotion->id  --}}
-    
-    {{ route('apprenant.store'.$id->id )}}
-    " method="post">
+    <form action="{{ route('apprenant.store', ['id' => $id]) }}" method="post">
         @csrf
      <input type="text" name="first_name" value="{{ old('first_name')}}">
      @error('first_name')

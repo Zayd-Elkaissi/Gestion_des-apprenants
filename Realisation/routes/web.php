@@ -27,9 +27,9 @@ Route::get('/search', [PromotionController::class, 'search'])->name('promotion.s
 
 // Route::get('/', [PromotionController::class, 'index']);
 Route::get('/apprenant/create/{id}',[ ApprenantController::class, 'create']);
-Route::post('/apprenant/store/{id}', [ApprenantController::class, 'store'])->name('apprenant.store');
+Route::post('/apprenant/store/{id?}', [ApprenantController::class, 'store'])->name('apprenant.store');
 Route::get('/apprenant.edit', [ApprenantController::class, 'edit']);
-Route::resource('/apprenant', ApprenantController::class);
+Route::resource('/apprenant', ApprenantController::class)->except('store');
 Route::get('/apprenant.search', [ApprenantController::class, 'search'])->name('apprenant.search');
 
 // $promotion = Promotion::find($promotion)->first();

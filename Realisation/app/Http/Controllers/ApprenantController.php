@@ -15,21 +15,21 @@ class ApprenantController extends Controller
      */
     public function index()
     {
-
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Promotion $promotion)
+    public function create($id)
     {
-        return view('/apprenant/create'
-        , [
-            'id' => $promotion
-        ]
-    );
+        return view(
+            'apprenant.create',
+            [
+                'id' => $id
+            ]
+        );
     }
 
     /**
@@ -57,10 +57,10 @@ class ApprenantController extends Controller
             'promotion_id' => $id
 
         ]);
-        
-        return redirect('/promotion/edit/');
+
+        return redirect("/promotion/$id/edit/");
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -80,14 +80,14 @@ class ApprenantController extends Controller
      */
     public function edit(Apprenant $apprenant)
     {
-       
+
         $apprenants = Apprenant::all();
         return view('edit', [
             'Apprenant' => $apprenants
-            
+
         ]);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
