@@ -127,9 +127,22 @@ class ApprenantController extends Controller
         $search = Apprenant::where('first_name', 'LIKE', '%' . $input . '%')->get();
         foreach ($search as $apprenant) {
             $output .=
-                '<tr>
-           <td> ' . $apprenant->first_name . ' </td>
-           </tr>';
+        //         '<tr>
+        //    <td> ' . $apprenant->first_name . ' </td>
+        //    </tr>';
+
+           '<tr>
+           <td>
+
+           </td>
+           <td> '.$apprenant->first_name.' </td> 
+           <td> '.$apprenant->last_name.' </td> 
+           <td> '.$apprenant->email.' </td> 
+           <td>
+              <a href=' . route ('promotion.edit' , [ $apprenant->id] )  .' class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Éditer">&#xE254;</i></a>
+              <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Effacer">&#xE872;</i></a>
+            </td>
+     </tr>';
         }
         return $output;
     }

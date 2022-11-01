@@ -9,25 +9,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    {{-- <link rel="stylesheet" href="css/style.css"> --}}
+    <link rel="stylesheet" href={{asset('css/style.css')}}>
+
     <title>Document</title>
 </head>
 <body>
-
-
-
-
-
-
-
-  <body>
     <div class="container">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-xs-6">
-                            <h2>Manage <b>Promotion</b></h2>
+                            <h2>Manage <b>Promotions</b></h2>
                         </div>
                         <div class="col-xs-6">
                             <a href="/create" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span> Ajouter</span></a>
@@ -57,10 +51,32 @@
                             <td>  {{$item->name}} </td>
                             <td>
                                 <a href="{{ route ('promotion.edit' , [ $item->id] ) }}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Éditer">&#xE254;</i></a>
-                                <a href="delete.php?id=<?php  ?>" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Effacer">&#xE872;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Effacer">&#xE872;</i></a>
                             </td>
                             
                         </tr>
+                        <div id="deleteEmployeeModal" class="modal fade">
+                                   <div class="modal-dialog">
+                                       <div class="modal-content">
+                                           <form>
+                                               <div class="modal-header">						
+                                                   <h4 class="modal-title">Effacer Promotion</h4>
+                                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                                                   </button>
+                                               </div>
+                                               <div class="modal-body">					
+                                                   <p>Voulez-vous vraiment supprimer ces promotion ?</p>
+                                                   <p class="text-warning"><small>Cette action ne peut pas être annulée.</small></p>
+                                               </div>
+                                               <div class="modal-footer">
+                                                   <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                   <a href="{{ route ('promotions.destroy' ,  $item->id ) }}" class="btn btn-danger" >Delete</a>
+                                                   {{-- <input type="submit" class="btn btn-danger" value="Delete"> --}}
+                                               </div>
+                                           </form>
+                                       </div>
+                                   </div>
+                               </div>
                         @endforeach
                     </tbody>
                 </table>
@@ -68,32 +84,6 @@
         </div>        
     </div>
 
-
-
-
-
-
-
-
-  
-    {{-- <input type="text" name="search" id="search">
-    <div id="show"></div> --}}
-    {{-- <a href="/create">add</a> --}}
-     <ul>
-        @foreach ($Promotion as $item)
-        <li class="text-gray-900">
-            {{$item->name}} 
-            <a href=" {{ route ('promotion.edit' , [ $item->id] ) }}">update</a>
-            {{-- <a href="{{ route ('promotion.destroy' ,  $item->id ) }}">Delete</a> --}}
-            <form action="{{ route ('promotion.destroy' , [ $item->id] ) }}" method="post">
-           @csrf
-                @method('DELETE')
-                <input type="submit" value="Delete">
-            </form>
-
-        </li>
-        @endforeach
-     </ul>
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

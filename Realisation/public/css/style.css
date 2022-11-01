@@ -232,3 +232,12 @@ table.table .avatar {
 .modal form label {
     font-weight: normal;
 }
+
+#error{
+    margin-left: 220px;
+    color: red;
+}
+
+#for{
+    
+}

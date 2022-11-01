@@ -18,7 +18,9 @@ Route::controller(PromotionController::class)->group(function(){
 Route::get('/', 'index');
 Route::get('/create', 'create');
 Route::post('/store', 'store');
-Route::get('/edit', 'edit');
+// Route::get('/edit/{id}', 'edit')->name('promotion.edit');
+// Route::put('/promotion/update/', 'update')->name('promotion.update');
+Route::get('/promotion/delete/{id}', 'destroy')->name('promotions.destroy');
 Route::resource('/promotion', PromotionController::class);
 Route::get('/search', 'search')->name('promotion.search');
 });

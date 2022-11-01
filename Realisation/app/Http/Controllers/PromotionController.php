@@ -127,9 +127,17 @@ class PromotionController extends Controller
         $search = Promotion::where('name', 'LIKE', '%' . $input . '%')->get();
         foreach ($search as $promotion) {
             $output .=
-                '<tr>
-           <td> ' . $promotion->name . ' </td>
-           </tr>';
+
+        '<tr>
+               <td>
+
+               </td>
+               <td> '.$promotion->name.' </td> 
+               <td>
+                  <a href=' . route ('promotion.edit' , [ $promotion->id] )  .' class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Éditer">&#xE254;</i></a>
+                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Effacer">&#xE872;</i></a>
+                </td>
+         </tr>';
         }
         return $output;
     }
