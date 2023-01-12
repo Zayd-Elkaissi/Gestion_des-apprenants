@@ -24,7 +24,7 @@
                             <h2>Manage <b>Promotions</b></h2>
                         </div>
                         <div class="col-xs-6">
-                            <a href="/create" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span> Ajouter</span></a>
+                            <a href="{{route('promotion.create')}}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span> Ajouter</span></a>
                             <form action="" class="d-flex col-md-6" id="for" method="POST">
                                 <i class="bi bi-search" id="searchi"></i>
                                 <input class="form-control" placeholder="Search" type="search" id="search" name="input" >
@@ -70,7 +70,7 @@
                                                </div>
                                                <div class="modal-footer">
                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                   <a href="{{ route ('promotions.destroy' ,  $item->id ) }}" class="btn btn-danger" >Delete</a>
+                                                   <a href="{{ route ('promotion.destroy' ,  $item->id ) }}" class="btn btn-danger" >Delete</a>
                                                    {{-- <input type="submit" class="btn btn-danger" value="Delete"> --}}
                                                </div>
                                            </form>

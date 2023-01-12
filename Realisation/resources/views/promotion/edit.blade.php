@@ -9,8 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
     <link rel="stylesheet" href={{asset('css/style.css')}}>
     <title>Document</title>
 </head>
@@ -19,9 +17,9 @@
   <div class="row justify-content-center">
     <div class="col-md-6 text-center">
         <h2 class="">Edit page</h2>
-        <form action="{{ route('promotion.update', ['promotion'=> $promotion->id])}}" method="post">
+        <form action="{{ route('promotion.update', ['id'=> $promotion->id])}}" method="post">
           @csrf
-          @method('PUT')
+          {{-- @method('PUT') --}}
           <div class="i has-success">
          <input type="text" class="form-control" name="nameUpdate" value={{ $promotion->name }}>
          <button type="submit" class="btn btn-primary btn-sm active mt-3">Update</button>

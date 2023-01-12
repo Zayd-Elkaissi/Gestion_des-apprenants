@@ -53,7 +53,7 @@ class ApprenantController extends Controller
 
         ]);
 
-        return redirect("/promotion/$id/edit/");
+        return redirect("/promotion/edit/$id");
     }
 
     /**
@@ -102,7 +102,7 @@ class ApprenantController extends Controller
         $apprenant->last_name = strip_tags($request->input('last_name'));
         $apprenant->email = strip_tags($request->input('email'));
         $apprenant->save();
-        return redirect("/promotion/$apprenant->promotion_id/edit");
+        return redirect("/promotion/edit/$apprenant->promotion_id");
     }
 
     /**
